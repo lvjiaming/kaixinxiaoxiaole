@@ -1,6 +1,6 @@
 function CellModel(){
     this.type = null;
-    this.status = CELL_STATUS.COMMON;
+    this.status = global.CELL_STATUS.COMMON;
     this.x = 1;
     this.y = 1;
     this.startX = 1;
@@ -39,14 +39,14 @@ CellModel.prototype.moveToAndBack = function(pos){
     var srcPos = cc.p(this.x,this.y);
     this.cmd.push({
         action: "moveTo",
-        keepTime: ANITIME.TOUCH_MOVE,
+        keepTime: global.ANITIME.TOUCH_MOVE,
         playTime: 0,
         pos: pos
     });
     this.cmd.push({
         action: "moveTo",
-        keepTime: ANITIME.TOUCH_MOVE,
-        playTime: ANITIME.TOUCH_MOVE,
+        keepTime: global.ANITIME.TOUCH_MOVE,
+        playTime: global.ANITIME.TOUCH_MOVE,
         pos: srcPos
     });
 }
@@ -55,7 +55,7 @@ CellModel.prototype.moveTo = function(pos, playTime){
     var srcPos = cc.p(this.x,this.y);
     this.cmd.push({
         action: "moveTo",
-        keepTime: ANITIME.TOUCH_MOVE,
+        keepTime: global.ANITIME.TOUCH_MOVE,
         playTime: playTime,
         pos: pos
     });
@@ -67,7 +67,7 @@ CellModel.prototype.toDie = function(playTime){
     this.cmd.push({
         action: "toDie",
         playTime: playTime,
-        keepTime: ANITIME.DIE
+        keepTime: global.ANITIME.DIE
     });
     this.isDeath = true;
 }
@@ -76,7 +76,7 @@ CellModel.prototype.toShake = function(playTime){
     this.cmd.push({
         action: "toShake",
         playTime: playTime,
-        keepTime: ANITIME.DIE_SHAKE
+        keepTime: global.ANITIME.DIE_SHAKE
     });
 }
 
@@ -96,5 +96,5 @@ CellModel.prototype.moveToAndDie = function(pos){
 CellModel.prototype.isBird = function(){
     return this.type == CELL_TYPE.G;
 }
-
+window.global = {};
 global.CellModel = CellModel;

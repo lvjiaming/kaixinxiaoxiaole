@@ -24,8 +24,8 @@ global.GRID_HEIGHT = 9;
 global.CELL_WIDTH = 70;
 global.CELL_HEIGHT = 70;
 
-global.GRID_PIXEL_WIDTH = GRID_WIDTH * CELL_WIDTH;
-global.GRID_PIXEL_HEIGHT = GRID_HEIGHT * CELL_HEIGHT;
+global.GRID_PIXEL_WIDTH = global.GRID_WIDTH * global.CELL_WIDTH;
+global.GRID_PIXEL_HEIGHT = global.GRID_HEIGHT * global.CELL_HEIGHT;
 
 
 // ********************   时间表  animation time **************************

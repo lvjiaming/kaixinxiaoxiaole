@@ -91,11 +91,11 @@ cc.Class({
     },
     convertTouchPosToCell: function(pos){
         pos = this.node.convertToNodeSpace(pos);
-        if(pos.x < 0 || pos.x >= GRID_PIXEL_WIDTH || pos.y < 0 || pos.y >= GRID_PIXEL_HEIGHT){
+        if(pos.x < 0 || pos.x >= global.GRID_PIXEL_WIDTH || pos.y < 0 || pos.y >= global.GRID_PIXEL_HEIGHT){
             return false;
         }
-        var x = Math.floor(pos.x / CELL_WIDTH) + 1;
-        var y = Math.floor(pos.y / CELL_HEIGHT) + 1;
+        var x = Math.floor(pos.x / global.CELL_WIDTH) + 1;
+        var y = Math.floor(pos.y / global.CELL_HEIGHT) + 1;
         return cc.p(x, y);
     },
     updateView: function(changeModels){

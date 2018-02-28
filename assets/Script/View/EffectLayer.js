@@ -51,8 +51,8 @@ cc.Class({
                     animation.play("effect_col");
                 }
 
-                instantEffect.x = CELL_WIDTH * (cmd.pos.x - 0.5);
-                instantEffect.y = CELL_WIDTH * (cmd.pos.y - 0.5);
+                instantEffect.x = global.CELL_WIDTH * (cmd.pos.x - 0.5);
+                instantEffect.y = global.CELL_WIDTH * (cmd.pos.y - 0.5);
                 instantEffect.parent = this.node;
                 animation.on("finished",function(){
                     instantEffect.destroy();

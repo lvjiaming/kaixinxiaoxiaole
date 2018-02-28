@@ -27,10 +27,10 @@ cc.Class({
         this.model = model;
         var x = model.startX;
         var y = model.startY;
-        this.node.x = CELL_WIDTH * (x - 0.5);
-        this.node.y = CELL_HEIGHT * (y - 0.5);
+        this.node.x = global.CELL_WIDTH * (x - 0.5);
+        this.node.y = global.CELL_HEIGHT * (y - 0.5);
         var animation  = this.node.getComponent(cc.Animation);
-        if (model.status == CELL_STATUS.COMMON){
+        if (model.status == global.CELL_STATUS.COMMON){
             animation.stop();
         } 
         else{
@@ -50,16 +50,16 @@ cc.Class({
                 actionArray.push(delay);
             }
             if(cmd[i].action == "moveTo"){
-                var x = (cmd[i].pos.x - 0.5) * CELL_WIDTH;
-                var y = (cmd[i].pos.y - 0.5) * CELL_HEIGHT;
-                var move = cc.moveTo(ANITIME.TOUCH_MOVE, cc.p(x,y));
+                var x = (cmd[i].pos.x - 0.5) * global.CELL_WIDTH;
+                var y = (cmd[i].pos.y - 0.5) * global.CELL_HEIGHT;
+                var move = cc.moveTo(global.ANITIME.TOUCH_MOVE, cc.p(x,y));
                 actionArray.push(move);
             }
             else if(cmd[i].action == "toDie"){
-                if(this.status == CELL_STATUS.BIRD){
+                if(this.status == global.CELL_STATUS.BIRD){
                     let animation = this.node.getComponent(cc.Animation);
                     animation.play("effect");
-                    actionArray.push(cc.delayTime(ANITIME.BOMB_BIRD_DELAY));
+                    actionArray.push(cc.delayTime(global.ANITIME.BOMB_BIRD_DELAY));
                 }
                 var callFunc = cc.callFunc(function(){
                     this.node.destroy();
@@ -94,15 +94,15 @@ cc.Class({
     setSelect: function(flag){
         var animation = this.node.getComponent(cc.Animation);
         var bg = this.node.getChildByName("select");
-        if(flag == false && this.isSelect && this.model.status == CELL_STATUS.COMMON){
+        if(flag == false && this.isSelect && this.model.status == global.CELL_STATUS.COMMON){
             animation.stop();
             this.node.getComponent(cc.Sprite).spriteFrame = this.defaultFrame;
         }
-        else if(flag && this.model.status == CELL_STATUS.COMMON){
-            animation.play(CELL_STATUS.CLICK);
+        else if(flag && this.model.status == global.CELL_STATUS.COMMON){
+            animation.play(global.CELL_STATUS.CLICK);
         }
-        else if(flag && this.model.status == CELL_STATUS.BIRD){
-            animation.play(CELL_STATUS.CLICK);
+        else if(flag && this.model.status == global.CELL_STATUS.BIRD){
+            animation.play(global.CELL_STATUS.CLICK);
         }
         bg.active = flag; 
         this.isSelect = flag;

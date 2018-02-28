@@ -21,7 +21,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        this.gameModel = new GameModel();
+        this.gameModel = new global.GameModel();
         this.gameModel.init(5);
         var gridScript = this.grid.getComponent("GridView");
         gridScript.setController(this);
